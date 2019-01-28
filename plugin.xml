@@ -2,7 +2,7 @@
 <plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
     <label lang="de">Warenkorb teilen</label>
-    <label lang="en">Warenkorb teilen</label>
+    <label lang="en">Share basket</label>
 
     <version>1.0.0</version>
     <copyright>(c) by Stefan Poensgen</copyright>
