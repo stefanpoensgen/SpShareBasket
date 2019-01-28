@@ -2,10 +2,6 @@
 
 class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Action
 {
-    public function indexAction()
-    {
-    }
-
     public function loadAction()
     {
         /** @var sBasket $basketModule */
