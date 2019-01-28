@@ -55,7 +55,7 @@ class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Actio
         $articles = [];
         foreach ($BasketData['content'] as $key => $article) {
             if ($article['modus'] == 2) {
-                $voucher = $this->getVoucher();
+                $voucher = $basketModule->sGetVoucher();
                 $article['ordernumber'] = $voucher['code'];
             }
 
@@ -170,39 +170,5 @@ class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Actio
                 ':sessionID' => $this->container->get('session')->get('sessionId'),
             ])
             ->execute();
-    }
-
-    public function getVoucher()
-    {
-        /** @var \Doctrine\DBAL\Query\QueryBuilder $builder */
-        $builder = $this->container->get('dbal_connection')->createQueryBuilder();
-        $builder->select('id as basketID', 'ordernumber', 'articleID as voucherID')
-            ->from('basketID')
-            ->where('modus = 2')
-            ->andWhere('sessionID = :sessionID')
-            ->setParameter(':sessionID', $this->container->get('session')->get('sessionId'));
-        $voucher = $builder->execute()->fetch(\PDO::FETCH_ASSOC);
-
-        if (!empty($voucher)) {
-            /** @var \Doctrine\DBAL\Query\QueryBuilder $builder */
-            $builder = $this->container->get('dbal_connection')->createQueryBuilder();
-            $builder->select('vouchercode')
-                ->from('s_emarketing_vouchers')
-                ->where('ordercode = :ordercode')
-                ->setParameter('ordercode', $voucher['ordernumber']);
-            $voucher['code'] = $builder->execute()->fetch(\PDO::FETCH_COLUMN);
-
-            if (empty($voucher['code'])) {
-                /** @var \Doctrine\DBAL\Query\QueryBuilder $builder */
-                $builder = $this->container->get('dbal_connection')->createQueryBuilder();
-                $builder->select('code')
-                    ->from('s_emarketing_voucher_codes')
-                    ->where('id = :id')
-                    ->setParameter('id', $voucher['voucherID']);
-                $voucher['code'] = $builder->execute()->fetch(\PDO::FETCH_COLUMN);
-            }
-        }
-
-        return $voucher;
     }
 }
