@@ -1,5 +1,7 @@
 # SpShareBasket
 
+[![Travis CI](https://travis-ci.org/stefanpoensgen/SpShareBasket.svg?branch=master)](https://travis-ci.org/stefanpoensgen/SpShareBasket)
+
 Shopware Plugin to share your basket
 
 Also stores product mode, coupons and selected fields from s_order_basket_attributes
