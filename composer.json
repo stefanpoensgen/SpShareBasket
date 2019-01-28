@@ -1,0 +1,13 @@
+{
+    "name": "stefanpoensgen/sp-share-basket",
+    "keywords": ["basket", "checkout", "shopware", "shopware-plugin"],
+    "description": "Shopware Plugin to share your basket",
+    "license": "MIT",
+    "type": "shopware-plugin",
+    "extra": {
+        "installer-name": "SpShareBasket"
+    },
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
