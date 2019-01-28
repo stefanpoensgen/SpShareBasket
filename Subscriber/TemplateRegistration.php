@@ -54,7 +54,7 @@ class TemplateRegistration implements SubscriberInterface
         $less = new LessDefinition(
             [],
             [
-                $this->pluginDir . '/Resources/views/frontend/_public/src/css/sharebasket.less',
+                $this->pluginDir . '/Resources/views/frontend/_public/src/less/sharebasket.less',
             ],
             $this->pluginDir
         );
