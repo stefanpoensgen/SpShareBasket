@@ -1,12 +1,12 @@
-(function($, window) {
+(function ($, window) {
     $.plugin('SpShareBasket', {
 
-        init: function() {
+        init: function () {
             var me = this;
             var clipboard = new ClipboardJS('[data-clipboard-target]');
         },
 
-        destroy: function() {
+        destroy: function () {
             var me = this;
             me._destroy();
         }
