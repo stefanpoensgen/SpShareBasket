@@ -10,7 +10,7 @@ use Shopware\Components\Model\ModelEntity;
  * @ORM\Entity
  * @ORM\Table(name="s_plugin_sharebasket_baskets")
  */
-class Baskets extends ModelEntity
+class Basket extends ModelEntity
 {
     /**
      * Unique identifier

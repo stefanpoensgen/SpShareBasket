@@ -1,10 +1,10 @@
 <?php
 
-use SpShareBasket\Models\Baskets;
+use SpShareBasket\Models\Basket;
 
 class Shopware_Controllers_Backend_ShareBasket extends Shopware_Controllers_Backend_Application
 {
-    protected $model = Baskets::class;
+    protected $model = Basket::class;
     protected $alias = 'baskets';
 
     public function getAttributesAction()

@@ -9,7 +9,7 @@ use Shopware\Components\Plugin\Context\DeactivateContext;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
 use Shopware\Components\Plugin\Context\UpdateContext;
-use SpShareBasket\Models\Baskets;
+use SpShareBasket\Models\Basket;
 
 class SpShareBasket extends Plugin
 {
@@ -81,7 +81,7 @@ class SpShareBasket extends Plugin
     {
         $tool = new SchemaTool($this->container->get('models'));
 
-        $tool->updateSchema([$this->container->get('models')->getClassMetadata(Baskets::class)], true);
+        $tool->updateSchema([$this->container->get('models')->getClassMetadata(Basket::class)], true);
     }
 
     /**
@@ -91,6 +91,6 @@ class SpShareBasket extends Plugin
     {
         $tool = new SchemaTool($this->container->get('models'));
 
-        $tool->dropSchema([$this->container->get('models')->getClassMetadata(Baskets::class)]);
+        $tool->dropSchema([$this->container->get('models')->getClassMetadata(Basket::class)]);
     }
 }
