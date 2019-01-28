@@ -20,7 +20,7 @@ class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Actio
 
         foreach ($articles as $article) {
             if ($article->modus === 1) {
-                $basketModule->sSYSTEM->_GET['sAddPremium'] = $article->ordernumber;
+                $this->container->get('system')->_GET['sAddPremium'] = $article->ordernumber;
                 $basketModule->sInsertPremium();
             } elseif ($article->modus == 2) {
                 $basketModule->sAddVoucher($article->ordernumber);
