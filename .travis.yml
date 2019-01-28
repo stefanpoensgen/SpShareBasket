@@ -14,8 +14,6 @@ services:
 
 env:
     matrix:
-        - SHOPWARE_VERSION="5.3"
-        - SHOPWARE_VERSION="5.4"
         - SHOPWARE_VERSION="5.5"
     global:
         - PLUGIN_NAME=SpShareBasket
