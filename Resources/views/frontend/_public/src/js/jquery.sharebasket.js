@@ -3,7 +3,7 @@
 
         init: function () {
             var me = this;
-            var clipboard = new ClipboardJS('[data-clipboard-target]');
+            me.clipboard = new ClipboardJS('[data-clipboard-target]');
         },
 
         destroy: function () {
