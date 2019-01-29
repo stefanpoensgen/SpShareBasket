@@ -38,13 +38,13 @@ class Basket extends ModelEntity
      * @var string
      * @ORM\Column(name="session_id", type="string", nullable=false)
      */
-    protected $sessionId = '';
+    protected $sessionId;
 
     /**
      * @var DateTime
-     * @ORM\Column(name="time", type="datetime", nullable=false)
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
-    protected $time;
+    protected $created;
 
     /**
      * @return int
@@ -113,16 +113,16 @@ class Basket extends ModelEntity
     /**
      * @return DateTime
      */
-    public function getTime()
+    public function getCreated()
     {
-        return $this->time;
+        return $this->created;
     }
 
     /**
-     * @param DateTime $time
+     * @param DateTime $created
      */
-    public function setTime($time)
+    public function setCreated($created)
     {
-        $this->time = $time;
+        $this->created = $created;
     }
 }

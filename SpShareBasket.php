@@ -39,18 +39,25 @@ class SpShareBasket extends Plugin
         $this->uninstallSchema();
     }
 
-    public function activate(ActivateContext $activateContext)
+    /**
+     * @param ActivateContext $context
+     */
+    public function activate(ActivateContext $context)
     {
-        // on plugin activation clear the cache
-        $activateContext->scheduleClearCache(ActivateContext::CACHE_LIST_ALL);
+        $context->scheduleClearCache(ActivateContext::CACHE_LIST_ALL);
     }
 
-    public function deactivate(DeactivateContext $deactivateContext)
+    /**
+     * @param DeactivateContext $context
+     */
+    public function deactivate(DeactivateContext $context)
     {
-        // on plugin deactivation clear the cache
-        $deactivateContext->scheduleClearCache(DeactivateContext::CACHE_LIST_ALL);
+        $context->scheduleClearCache(DeactivateContext::CACHE_LIST_ALL);
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return [
@@ -67,7 +74,7 @@ class SpShareBasket extends Plugin
     {
         $config = $this->container->get('shopware.plugin.cached_config_reader')->getByPluginName($this->getName());
 
-        $where = 'time < DATE_SUB(NOW(), INTERVAL ' . $config['cleanup'] . ' MONTH)';
+        $where = 'created < DATE_SUB(NOW(), INTERVAL ' . $config['cleanup'] . ' MONTH)';
 
         $result =$this->container->get('db')->delete('s_plugin_sharebasket_baskets', $where);
 
