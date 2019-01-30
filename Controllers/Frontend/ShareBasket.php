@@ -80,7 +80,6 @@ class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Actio
 
         $this->redirect(
             [
-                'module' => 'frontend',
                 'action' => 'cart',
                 'controller' => 'checkout',
                 'bID' => $basketID,
@@ -110,19 +109,36 @@ class Shopware_Controllers_Frontend_ShareBasket extends Enlight_Controller_Actio
     /**
      * @param $articles
      *
+     * @throws \Doctrine\DBAL\DBALException
+     *
      * @return string
      */
     public function saveBasket($articles)
     {
-        $basketID = \Ramsey\Uuid\Uuid::uuid4()->toString();
-        $this->container->get('dbal_connection')->insert('s_plugin_sharebasket_baskets', [
-            'basketID' => $basketID,
-            'articles' => $articles,
-            'session_id' => $this->container->get('session')->get('sessionId'),
-            'created' => date('Y-m-d H:i:s'),
-        ]);
+        $statement = $this->container->get('dbal_connection')
+            ->prepare('INSERT IGNORE INTO s_plugin_sharebasket_baskets (basketID, articles, created) VALUES (:basketID, :articles, :created)');
+        $statement->bindParam(':articles', $articles);
+
+        $created = date('Y-m-d H:i:s');
+        $statement->bindParam(':created', $created);
+
+        do {
+            $basketID = $this->generateBasketId();
+            $statement->bindParam(':basketID', $basketID);
+            $statement->execute();
+        } while (
+            $statement->rowCount() === 0
+        );
 
         return $basketID;
+    }
+
+    /**
+     * @return string
+     */
+    public function generateBasketId()
+    {
+        return base_convert(microtime(false), 10, 36);
     }
 
     /**
