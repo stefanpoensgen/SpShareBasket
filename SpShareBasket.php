@@ -56,32 +56,6 @@ class SpShareBasket extends Plugin
     }
 
     /**
-     * @return array
-     */
-    public static function getSubscribedEvents()
-    {
-        return [
-            'Shopware_CronJob_ShareBasketCleanup' => 'cleanup',
-        ];
-    }
-
-    /**
-     * @param \Shopware_Components_Cron_CronJob $job
-     *
-     * @return string
-     */
-    public function cleanup(\Shopware_Components_Cron_CronJob $job)
-    {
-        $config = $this->container->get('shopware.plugin.cached_config_reader')->getByPluginName($this->getName());
-
-        $where = 'created < DATE_SUB(NOW(), INTERVAL ' . $config['cleanup'] . ' MONTH)';
-
-        $result =$this->container->get('db')->delete('s_plugin_sharebasket_baskets', $where);
-
-        return 'Gelöscht: ' . $result;
-    }
-
-    /**
      * Install or update s_plugin_sharebasket_baskets table
      */
     private function installSchema()
