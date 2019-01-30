@@ -15,17 +15,17 @@
                 <a class="btn is--small is--center share-mail" data-clipboard-target="#sharebasket">
                     <i class="icon--clipboard"></i> {s name="copyurl"}{/s}
                 </a>
-                {if $spShareBasketEmail}
+                {if {config namespace=SpShareBasket name=email}}
                     <a class="btn is--small is--center share-mail" href="mailto:%20?subject={s name='sharetitle'}{/s}%20{$sShopname}&body={$sBasketUrl}">
                         <i class="icon--mail"></i> {s name="email"}{/s}
                     </a>
                 {/if}
-                {if $spShareBasketFacebook}
+                {if {config namespace=SpShareBasket name=facebook}}
                     <a class="btn is--small is--center share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?title={s name='sharetitle'}{/s} {$sShopname}&u={$sBasketUrl}">
                         <i class="icon--facebook"></i> {s name="facebook"}{/s}
                     </a>
                 {/if}
-                {if $spShareBasketWhatsApp}
+                {if {config namespace=SpShareBasket name=whatsapp}}
                     <a class="btn is--small is--center share-whatsapp" target="_blank" href="https://api.whatsapp.com/send?text={s name='sharetitle'}{/s} {$sShopname} {$sBasketUrl}">
                         <i class="icon--share"></i> {s name="whatsapp"}{/s}
                     </a>
