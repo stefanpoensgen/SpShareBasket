@@ -8,7 +8,11 @@ use Shopware\Components\Model\ModelEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="s_plugin_sharebasket_baskets")
+ * @ORM\Table(name="s_plugin_sharebasket_baskets",
+ *     uniqueConstraints={
+ *        @ORM\UniqueConstraint(columns={"basketID"})
+ *    }
+ * )
  */
 class Basket extends ModelEntity
 {
