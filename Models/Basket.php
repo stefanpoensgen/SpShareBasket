@@ -39,12 +39,6 @@ class Basket extends ModelEntity
     protected $articles;
 
     /**
-     * @var string
-     * @ORM\Column(name="session_id", type="string", nullable=false)
-     */
-    protected $sessionId;
-
-    /**
      * @var DateTime
      * @ORM\Column(name="created", type="datetime", nullable=false)
      */
@@ -96,22 +90,6 @@ class Basket extends ModelEntity
     public function setArticles($articles)
     {
         $this->articles = $articles;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSessionId()
-    {
-        return $this->sessionId;
-    }
-
-    /**
-     * @param string $sessionId
-     */
-    public function setSessionId($sessionId)
-    {
-        $this->sessionId = $sessionId;
     }
 
     /**
