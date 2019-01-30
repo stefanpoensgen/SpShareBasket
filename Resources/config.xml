@@ -4,7 +4,7 @@
     <elements>
 
         <element required="true" type="number">
-            <name>cleanup</name>
+            <name>interval</name>
             <label lang="de">Warenkörbe nach X Monaten löschen</label>
             <label lang="en">Delete baskets after X months</label>
             <value>6</value>
