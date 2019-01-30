@@ -36,7 +36,9 @@ class SpShareBasket extends Plugin
     public function uninstall(UninstallContext $context)
     {
         parent::uninstall($context);
-        $this->uninstallSchema();
+        if (!$context->keepUserData()) {
+            $this->uninstallSchema();
+        }
     }
 
     /**
