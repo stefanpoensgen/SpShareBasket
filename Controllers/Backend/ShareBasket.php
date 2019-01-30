@@ -1,12 +1,7 @@
 <?php
 
-use SpShareBasket\Models\Basket;
-
-class Shopware_Controllers_Backend_ShareBasket extends Shopware_Controllers_Backend_Application
+class Shopware_Controllers_Backend_ShareBasket extends Shopware_Controllers_Backend_ExtJs
 {
-    protected $model = Basket::class;
-    protected $alias = 'baskets';
-
     public function getAttributesAction()
     {
         /** @var \Shopware\Bundle\AttributeBundle\Service\CrudService $crud */
