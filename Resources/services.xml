@@ -11,8 +11,12 @@
 
         <service class="SpShareBasket\Subscriber\Checkout" id="sp_share_basket.subscriber.checkout">
             <argument id="service_container" type="service"/>
-            <argument>%sp_share_basket.plugin_name%</argument>
-            <argument type="service" id="shopware.plugin.cached_config_reader"/>
+            <tag name="shopware.event_subscriber"/>
+        </service>
+
+        <service class="SpShareBasket\Subscriber\CronJob" id="sp_share_basket.subscriber.cron_job">
+            <argument id="service_container" type="service"/>
+            <argument id="sp_share_basket.config" type="service"/>
             <tag name="shopware.event_subscriber"/>
         </service>
 
