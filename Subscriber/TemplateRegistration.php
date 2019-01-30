@@ -2,9 +2,7 @@
 
 namespace SpShareBasket\Subscriber;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Enlight\Event\SubscriberInterface;
-use Shopware\Components\Theme\LessDefinition;
 
 class TemplateRegistration implements SubscriberInterface
 {
@@ -30,8 +28,6 @@ class TemplateRegistration implements SubscriberInterface
     {
         return [
             'Theme_Inheritance_Template_Directories_Collected' => 'onTemplateDirectoriesCollect',
-            'Theme_Compiler_Collect_Plugin_Javascript' => 'onAddJavascriptFiles',
-            'Theme_Compiler_Collect_Plugin_Less' => 'onAddLessFiles',
         ];
     }
 
@@ -44,34 +40,5 @@ class TemplateRegistration implements SubscriberInterface
         $dirs[] = $this->pluginDir . '/Resources/views/';
 
         $args->setReturn($dirs);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function onAddLessFiles()
-    {
-        $less = new LessDefinition(
-            [],
-            [
-                $this->pluginDir . '/Resources/views/frontend/_public/src/less/sharebasket.less',
-            ],
-            $this->pluginDir
-        );
-
-        return new ArrayCollection([$less]);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function onAddJavascriptFiles()
-    {
-        $jsFiles = [
-            $this->pluginDir . '/vendor/clipboardjs/clipboard.min.js',
-            $this->pluginDir . '/Resources/views/frontend/_public/src/js/jquery.sharebasket.js',
-        ];
-
-        return new ArrayCollection($jsFiles);
     }
 }
