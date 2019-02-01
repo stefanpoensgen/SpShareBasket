@@ -1,5 +1,7 @@
 # SpShareBasket
 
+> **Discontinued** - migrated to [FroshShareBasket](https://github.com/FriendsOfShopware/FroshShareBasket)
+
 [![Travis CI](https://travis-ci.org/stefanpoensgen/SpShareBasket.svg?branch=master)](https://travis-ci.org/stefanpoensgen/SpShareBasket)
 
 Shopware Plugin to share your basket
